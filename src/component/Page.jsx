@@ -67,7 +67,7 @@ const Page = ({ title, children, ...props }) => {
 
   return (
     <>
-      <AppBar position='static'>
+      <AppBar position='static' color='transparent'>
         <Toolbar className={classes.toolbar}>
           <img src='/icon_x192.png' className={classes.logo} alt='Logo' />
           <Typography variant='h6' className={classes.title}>

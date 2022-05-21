@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import "./App.css";
 
 import {
@@ -8,7 +8,6 @@ import {
   Redirect,
   useLocation,
 } from "react-router-dom";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import ExamplePage from "pages/ExamplePage";
@@ -39,16 +38,42 @@ const App = () => {
     return () => window.removeEventListener("resize", handleResize);
   });
 
-  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
-
-  const theme = React.useMemo(
+  const theme = useMemo(
     () =>
       createTheme({
         palette: {
-          type: prefersDarkMode ? "dark" : "light",
+          type: "dark",
+          primary: {
+            main: "#145c55"
+          },
+          secondary: {
+            main: "#f15e22"
+          },
+          background: {
+            default: "#1b212c"
+          }
         },
+        typography: {
+          h6: {
+            color: "#d9ead3"
+          }
+        },
+        overrides: {
+          MuiAppBar: {
+            root: {
+              borderBottom: "1px solid #d9ead3"
+            }
+          },
+          MuiTab: {
+            textColorInherit: {
+              '&$selected': {
+                color: "#d9ead3",
+              }
+            }
+          }
+        }
       }),
-    [prefersDarkMode]
+    []
   );
 
   return (

@@ -39,7 +39,9 @@ const ContainerCheck = () => {
 
 
   const onSubmit = () => {
-    enqueueSnackbar(`Check report for container ${reference} successfully sent!`)
+    enqueueSnackbar(`Check report for container ${reference} successfully sent!`, {
+      variant: "success"
+    })
     history.push("/")
   }
 

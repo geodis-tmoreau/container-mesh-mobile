@@ -26,7 +26,9 @@ class KuzzleService {
 }
    */
   getContainers() {
-    return kuzzle.document.search(this.index, "containers")
+    return kuzzle.document.search(this.index, "containers", {}, {
+      size: 50
+    })
   }
 
   getContainer(reference) {

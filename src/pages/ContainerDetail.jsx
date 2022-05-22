@@ -43,7 +43,9 @@ const ContainerDetail = () => {
             }}
             style={{
               width: "100%",
-              height: "50%"
+              height: "50%",
+              marginBottom: "15px",
+              marginTop: "5px"
             }}
             mapStyle="mapbox://styles/mapbox/streets-v9"
           >
@@ -60,6 +62,9 @@ const ContainerDetail = () => {
               content={container._id}
             />
           </MapGl>
+          <Typography>
+            United States, Los Angeles - Los Angeles Harbor
+          </Typography>
           <Button color="primary" variant="contained" onClick={() => history.push(`/containers/${reference}/identification`)} >Scan Container</Button>
         </>
       }

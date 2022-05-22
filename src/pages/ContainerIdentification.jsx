@@ -1,4 +1,4 @@
-import { Button, Checkbox, CircularProgress, Divider, Icon, List, ListItem, ListItemAvatar, ListItemSecondaryAction, ListItemText, makeStyles, TextField, Typography, useTheme } from "@material-ui/core";
+import { Button, CircularProgress, Divider, TextField, Typography, useTheme } from "@material-ui/core";
 import Page from "component/Page";
 import { useEffect, useRef, useState } from "react";
 import QrReader from "react-qr-reader";
@@ -20,6 +20,7 @@ const ContainerIdentification = () => {
   const [result, setResult] = useState(
     `https://api.onerecord.fr/containers/${reference}`
   );
+  const [scanned, setScanned] = useState(false);
   const [legacyMode, setLegacyMode] = useState(false);
   const [error, setError] = useState(null);
 
@@ -40,11 +41,9 @@ const ContainerIdentification = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      const pageContainer = document.getElementById("page-container");
-      const width = pageContainer.offsetWidth * 0.6;
+      const width = "100%"
       setPreviewStyle({
         width,
-        height: width,
       });
     };
     window.addEventListener("resize", handleResize);
@@ -54,6 +53,7 @@ const ContainerIdentification = () => {
 
   const handleScan = (result) => {
     if (result) {
+      setScanned(true);
       setResult(result);
     }
   };
@@ -78,9 +78,6 @@ const ContainerIdentification = () => {
             onScan={handleScan}
             legacyMode={legacyMode}
           />
-          <Button variant="outlined" onClick={() => { }}>
-            Upload QR Code
-          </Button>
           <TextField
             value={result}
             onChange={() => { }}
@@ -89,16 +86,13 @@ const ContainerIdentification = () => {
             helperText={error}
           ></TextField>
 
-          <Typography>Load demo data:</Typography>
-          <div style={{ display: "flex", justifyContent: "space-between" }}>
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={() => history.push(`/containers/${reference}/check`)}
-            >
-              Container
-            </Button>
-          </div>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={() => history.push(`/containers/${reference}/check`)}
+          >
+            Continue {!scanned && "without scanning"}
+          </Button>
 
         </>
       }

@@ -7,32 +7,39 @@ const Point = ({
     color,
     textColor = "#000",
     radius = 10,
+    selected,
+    onClick = null
 }) => {
-    const onClick = (event) => {
-        console.log(event);
-    };
-
     return (
         <Marker
             longitude={coordinates.longitude}
             latitude={coordinates.latitude}
             anchor="center"
             onClick={onClick}
+
         >
             <div
                 style={{
                     borderRadius: 50,
+                    border: `solid ${selected ? 2 : 0}px yellow`,
                     width: radius,
                     height: radius,
                     backgroundColor: color,
-                    textAlign: "center",
                     verticalAlign: "middle",
                     color: textColor,
                     display: "inline-block",
                     cursor: "pointer",
                 }}
             >
-                {content}
+                <span style={{
+                    width: "200px",
+                    position: "absolute",
+                    textAlign: "center",
+                    top: `-${radius}px`,
+                    left: `-100px`,
+                    fontWeight: "bolder",
+                    zIndex: "100"
+                }}>{content}</span>
             </div>
         </Marker>
     );

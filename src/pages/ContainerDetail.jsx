@@ -1,12 +1,8 @@
-import { Button, Checkbox, CircularProgress, Divider, Icon, List, ListItem, ListItemAvatar, ListItemSecondaryAction, ListItemText, makeStyles, TextField, Typography, useTheme } from "@material-ui/core";
+import { Button, CircularProgress, Divider, Typography, useTheme } from "@material-ui/core";
 import Page from "component/Page";
-import { useEffect, useRef, useState } from "react";
-import QrReader from "react-qr-reader";
+import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { useSnackbar } from "notistack";
 import kuzzleService from "services/kuzzle/kuzzle.service";
-import { TreeView } from "@material-ui/lab";
-import { ChevronRight, Height, ViewArray } from "@material-ui/icons";
 import { useParams } from "react-router-dom";
 import { default as MapGl } from "react-map-gl";
 import Point from "component/map/Point";
@@ -39,7 +35,7 @@ const ContainerDetail = () => {
             initialViewState={{
               longitude: container._source.lat,
               latitude: container._source.lon,
-              zoom: 8
+              zoom: 15
             }}
             style={{
               width: "100%",

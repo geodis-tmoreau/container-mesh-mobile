@@ -86,6 +86,13 @@ const App = () => {
               borderBottom: "1px solid #d9ead3"
             }
           },
+          MuiBottomNavigationAction: {
+            root: {
+              '&$selected': {
+                color: "#f15e22"
+              }
+            }
+          },
           MuiTab: {
             textColorInherit: {
               '&$selected': {

@@ -31,7 +31,7 @@ const ContainerListPage = () => {
               <ListItemAvatar>
                 <ViewArray color="primary" />
               </ListItemAvatar>
-              <ListItemText primary={`${container._source.reference}`} secondary="Container type 20p" />
+              <ListItemText primary={`${container._source.reference}`} secondary="Container type 20GP" />
               <ListItemSecondaryAction>
                 <ChevronRight />
               </ListItemSecondaryAction>
